@@ -1,15 +1,14 @@
-var express = require('express');
-var router = express.Router();
-var messageController = require('../controllers/MessageController');
+const express = require('express');
+const router = express.Router();
+const messageController = require('../controllers/MessageController');
 
-var validator = function(req, res, next) {
+const validator = function(req, res, next) {
     // Check access token
-    console.log('Check access token');
-
     return next();
 };
 
 router.get('/message', validator, messageController.index);
 router.post('/message', validator, messageController.create);
+router.get('/message/:id', validator, messageController.detail);
 
 module.exports = router;

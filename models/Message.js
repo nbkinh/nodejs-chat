@@ -1,6 +1,6 @@
-var db = require('../common/connector');
+let db = require('../common/connector');
 
-var Message;
+let Message;
 try {
     Message = db.model('Message');
 } catch (e) {

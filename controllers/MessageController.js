@@ -1,4 +1,4 @@
-var Message = require('../models/Message');
+const Message = require('../models/Message');
 
 module.exports.index = function(req, res) {
     Message.find({}, function(err, data) {
@@ -22,4 +22,15 @@ module.exports.create = function(req, res) {
             'message' : 'Create successfully'
         });
     });
-}
+};
+
+module.exports.detail = function(req, res) {
+    let id = req.params.id;
+    Message.find({_id: id}, function (err, data) {
+        if (err) {
+            throw err;
+        }
+
+        res.json(data);
+    });
+};

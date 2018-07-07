@@ -1,36 +1,22 @@
 const Message = require('../models/Message');
+const ResponseExpress = require('../components/ResponseExpress');
 
 module.exports.index = function(req, res) {
     Message.find({}, function(err, data) {
-        if (err) {
-            throw err;
-        }
-
-        res.json(data);
+        ResponseExpress.send(res, data, err);
     });
 };
 
 module.exports.create = function(req, res) {
     let data = req.body;
     Message(data).save(function(err, data) {
-        if (err) {
-            throw err;
-        }
-
-        res.json({
-            'status' : 1,
-            'message' : 'Create successfully'
-        });
+        ResponseExpress.send(res, data, err);
     });
 };
 
 module.exports.detail = function(req, res) {
     let id = req.params.id;
     Message.find({_id: id}, function (err, data) {
-        if (err) {
-            throw err;
-        }
-
-        res.json(data);
+        ResponseExpress.send(res, data, err);
     });
 };

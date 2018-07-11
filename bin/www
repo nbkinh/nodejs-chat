@@ -7,7 +7,7 @@ require('dotenv').load();
 let app = require('../app');
 const debug = require('debug')('demoejs:server');
 let http = require('http');
-console.log(process.env.PORT, 'process.env.PORT:');
+
 /**
  * Get port from environment and store in Express.
  */
